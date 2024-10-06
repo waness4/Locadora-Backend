@@ -34,9 +34,9 @@ public class AtorController {
         return service.saveAll(novoAtor);
     }
     
-    @GetMapping("/listar/{id}")
-    public Ator obterIdAtor(@PathVariable UUID id) throws RelationNotFoundException{
-        return service.listId(id);
+    @GetMapping("/listar")
+    public Iterable<Ator> obterIdAtor() throws RelationNotFoundException{
+        return service.listAll();
     }
     
     @PutMapping("/editar/{id}")

@@ -34,9 +34,9 @@ public class ClasseController {
         return service.saveAll(novaClasse);
     }
     
-    @GetMapping("/listar/{id}")
-    public Classe obterIdClasse(@PathVariable UUID id) throws RelationNotFoundException{
-        return service.listId(id);
+    @GetMapping("/listar")
+    public Iterable<Classe> obterIdClasse() throws RelationNotFoundException{
+        return service.listAll();
     }
     
     @PutMapping("/editar/{id}")
