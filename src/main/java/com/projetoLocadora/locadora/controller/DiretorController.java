@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.projetoLocadora.locadora.model.Classe;
 import com.projetoLocadora.locadora.model.Diretor;
 import com.projetoLocadora.locadora.service.DiretorService;
 
@@ -31,11 +32,16 @@ public class DiretorController {
         return service.saveAll(novoDiretor);
     }
     
-    @GetMapping("/listar/{id}")
+    @GetMapping("/listar")
     public Iterable<Diretor> obterIdDiretor() throws RelationNotFoundException{
         return service.listAll();
     }
     
+    @GetMapping("/listar/{id}")
+    public Diretor obterIdDiretor(@PathVariable UUID id) throws RelationNotFoundException{
+        return service.listId(id);
+    }
+
     @PutMapping("/editar/{id}")
     public Diretor editarDiretor(@PathVariable UUID id, @RequestBody Diretor diretor) throws RelationNotFoundException{
         return service.editId(diretor, id);

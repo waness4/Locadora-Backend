@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projetoLocadora.locadora.model.Classe;
+import com.projetoLocadora.locadora.model.Diretor;
 import com.projetoLocadora.locadora.service.ClasseService;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,6 +40,11 @@ public class ClasseController {
         return service.listAll();
     }
     
+    @GetMapping("/listar/{id}")
+    public Classe obterIdClasse(@PathVariable UUID id) throws RelationNotFoundException{
+        return service.listId(id);
+    }
+
     @PutMapping("/editar/{id}")
     public Classe editarClasse(@PathVariable UUID id, @RequestBody Classe classe) throws RelationNotFoundException{
         return service.editId(classe, id);

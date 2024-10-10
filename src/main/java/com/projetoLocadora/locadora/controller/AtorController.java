@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projetoLocadora.locadora.model.Ator;
+import com.projetoLocadora.locadora.model.Classe;
 import com.projetoLocadora.locadora.service.AtorService;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +38,11 @@ public class AtorController {
     @GetMapping("/listar")
     public Iterable<Ator> obterIdAtor() throws RelationNotFoundException{
         return service.listAll();
+    }
+
+    @GetMapping("/listar/{id}")
+    public Ator obterIdAtor(@PathVariable UUID id) throws RelationNotFoundException{
+        return service.listId(id);
     }
     
     @PutMapping("/editar/{id}")
