@@ -1,5 +1,6 @@
 package com.projetoLocadora.locadora.controller;
 import java.util.UUID;
+import java.util.List;
 
 import javax.management.relation.RelationNotFoundException;
 
@@ -21,8 +22,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 
 
-
-
 @RestController
 @RequestMapping("/api/ator")
 public class AtorController {
@@ -36,7 +35,7 @@ public class AtorController {
     }
     
     @GetMapping("/listar")
-    public Iterable<Ator> obterIdAtor() throws RelationNotFoundException{
+    public Iterable<Ator> listar(){
         return service.listAll();
     }
 

@@ -22,7 +22,7 @@ public class AtorService {
         return ator;
     }
 
-    public List<Ator> listAll(){
+    public Iterable<Ator> listAll(){
         return repository.findAll();
     }
 
