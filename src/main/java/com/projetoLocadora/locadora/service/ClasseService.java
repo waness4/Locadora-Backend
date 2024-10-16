@@ -40,7 +40,7 @@ public class ClasseService {
 
         alterado.setNome(classe.getNome());
         alterado.setDataDevolucao(classe.getDataDevolucao());
-        alterado.setClasse(classe.getClasse());
+        alterado.setValor(classe.getValor());
 
         return repository.save(alterado);
     }

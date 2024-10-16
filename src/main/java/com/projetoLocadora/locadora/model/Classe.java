@@ -27,6 +27,6 @@ public class Classe {
     private Date dataDevolucao;
 
     @Column(nullable = false)
-    private String classe;
+    private Double valor;
 
 }
