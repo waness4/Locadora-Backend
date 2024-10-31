@@ -7,6 +7,12 @@ import javax.management.relation.RelationNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,13 +21,6 @@ import com.projetoLocadora.locadora.service.DiretorService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/api/diretor")
@@ -67,7 +66,7 @@ public class DiretorController {
     public ResponseEntity<?> obterIdDiretor(@PathVariable UUID id) throws RelationNotFoundException {
         try {
             return ResponseEntity.ok(service.listId(id));
-        } catch (Exception e) {
+        } catch (RelationNotFoundException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro ao listar diretor: " + e.getMessage());
         }
     }
@@ -82,7 +81,7 @@ public class DiretorController {
             throws RelationNotFoundException {
         try {
             return ResponseEntity.ok(service.editId(diretor, id));
-        } catch (Exception e) {
+        } catch (RelationNotFoundException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro ao editar diretor: " + e.getMessage());
         }
     }
