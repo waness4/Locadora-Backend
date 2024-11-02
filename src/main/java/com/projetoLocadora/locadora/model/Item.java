@@ -9,6 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.Data;
 
 @Data
@@ -21,6 +23,7 @@ public class Item {
 
     private int numSerie;
 
+    @Temporal(TemporalType.DATE)
     private Date dtAquisicao;
 
     private String tipoItem;

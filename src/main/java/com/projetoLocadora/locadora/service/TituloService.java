@@ -44,7 +44,6 @@ public class TituloService {
         alterado.setCategoria(titulo.getCategoria());
         alterado.setClasse(titulo.getClasse());
         alterado.setDiretor(titulo.getDiretor());
-        alterado.setItens(titulo.getItens());
 
         return repository.save(alterado);
     }
