@@ -1,6 +1,7 @@
 package com.projetoLocadora.locadora.model;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -10,9 +11,10 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Data
@@ -37,7 +39,8 @@ public class Titulo {
     @ManyToOne
     private Diretor diretor;
 
-    @ManyToMany (mappedBy="titulos", fetch = FetchType.EAGER)
-    private Set<Ator> atores = new HashSet<>();
+    @ManyToMany (fetch = FetchType.EAGER)
+    @JoinTable ( name = "titulo_ator", joinColumns = @JoinColumn( name = "idTitulo"), inverseJoinColumns = @JoinColumn (name = "idAtores"))
+    private List<Ator> atores;
 
 }
