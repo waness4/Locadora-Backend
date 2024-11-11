@@ -1,6 +1,7 @@
 package com.projetoLocadora.locadora.model;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -25,11 +26,5 @@ public class Ator {
 
     @Column(nullable = false)
     private String nome;
-
-    @ManyToMany (fetch=FetchType.EAGER)
-        @JoinTable(name = "Titulo_Ator",
-        joinColumns={@JoinColumn(name = "idAtor")},
-        inverseJoinColumns= {@JoinColumn(name="idTitulo")})
-    private Set<Titulo> titulos = new HashSet<>();
 
 }
